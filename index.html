@@ -1,35 +1,43 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
 
-	<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-   crossorigin=""/>
+<style>
+
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #mapid {
+    height: 100vh;
+    width: 100vw;
+}
+
+</style>
+	
+</head>
+<body>
 
 
-		<style>	 
-	 #mapid { height: 100%; }
-		</style>
 
-	</head>
-
-	<!-- Make sure you put this AFTER Leaflet's CSS -->
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-   crossorigin=""/>
+<div id="mapid"></div>
 
 
-	<body>
-		<div id="mapid"/>
-	</body>
 
-	<script>
-var mymap = L.map('mapid').setView([37.9,-122.4], 10);
+<script>
+
+	var mymap = L.map('mapid').setView([37.9,-20.4], 2);
 
 L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
-    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>. Hut by Vectors Market from the Noun Project.',
-    maxZoom: 20,
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
+    minZoom: 2,
+		maxZoom: 20,
     id: 'stamen.watercolor',
 }).addTo(mymap);
 
@@ -39,31 +47,102 @@ L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png'
     id: 'stamen.toner.labels',
 }).addTo(mymap);
 
-
-var hut = L.icon({
-    iconUrl: 'https://rawgit.com/drewlevitt/drewlevitt.github.io/master/hut.png',
-
-    iconSize:     [36, 25], // size of the icon
-    iconAnchor:   [18, 12], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+var aug31 = L.icon({
+		iconUrl: 'images/Aug31_small.png',
+		iconSize: [100, 95],
+		iconAnchor: [50, 48],
+		popupAnchor: [0, 0]
 });
 
-var marker = L.marker([37.840515, -122.257396], {icon: hut}).addTo(mymap);
-marker.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
+var sep1 = L.icon({
+		iconUrl: 'images/Sep1_small.png',
+		iconSize: [100, 95],
+		iconAnchor: [35, 48],
+		popupAnchor: [0, 0]
+});
 
-var image = L.imageOverlay('/images/1_togetherwithourfamilies.png',
-													 [[37.940743, -122.701665], [38.013751, -122.202988]], 
-													 {opacity: 1}).addTo(mymap);
+var sep2 = L.icon({
+		iconUrl: 'images/Sep2_small.png',
+		iconSize: [100, 95],
+		iconAnchor: [65, 48],
+		popupAnchor: [0, 0]
+});
+
+var plane = L.icon({
+		iconUrl: 'images/plane_trans.png',
+		iconSize: [50, 50],
+		iconAnchor: [25, 25],
+		popupAnchor: [0, 0]
+});
+
+var roberts = L.marker([37.811908, -122.172674], {icon: aug31});
+var muirbeach = L.marker([37.861198, -122.575541], {icon: sep2});
+var mvcc = L.marker([37.899100, -122.528203], {icon: sep1, zIndexOffset: 1000});
+
+var sfo = L.marker([37.616450, -122.386059], {icon: plane});
+var oak = L.marker([37.712210, -122.212773], {icon: plane});
+
+//roberts.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
+
+
+
+var zoom1 = L.imageOverlay('images/zoom1.png', [[23.989553, -155.808169], [47.830333, -92.526917]], {opacity: 1}).addTo(mymap);
+var zoom2 = L.imageOverlay('images/zoom2.png', [[31.600329, -136.648013], [37.808298, -88.483949]], {opacity: 1});
+
+var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[74.242827, -39.792545], [78.229733, 114.543396]], {opacity: 1}).addTo(mymap);
+var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[61.262091, -82.858948], [65.064991, 20.148859]], {opacity: 1}).addTo(mymap);
+var text3 = L.imageOverlay('images/3_aredelightedtoinviteyoutojoinus.png', [[50.474696, -103.601136], [52.925188, -54.646060]], {opacity: 1});
+var text4 = L.imageOverlay('images/4_incelebrationofourmarriage.png', [[45.386556, -108.083559], [46.788464, -88.483949]], {opacity: 1});
+var text5 = L.imageOverlay('images/5_onsaturdayseptember1st2018.png', [[42.817750, -116.832763], [43.475029, -105.516845]], {opacity: 1});
+var text6 = L.imageOverlay('images/6_inthesanfranciscobayarea.png', [[40.118181, -120.963623], [40.470125, -115.723144]], {opacity: 1});
+var text7 = L.imageOverlay('images/7_letthismapintroduceyou.png', [[38.812744, -121.676231], [38.996750, -119.371552]], {opacity: 1});
+var text8 = L.imageOverlay('images/8_toourplannedfestivities.png', [[38.271269, -122.320149], [38.374698, -121.290181]], {opacity: 1});
+
+var text9a = L.imageOverlay('images/9a_fullcelebrationndetailsandrsvpat.png', [[38.005838, -122.847604], [38.042208, -122.098271]], {opacity: 1});
+var text9b = L.imageOverlay('images/9b_wwwdrewandsaragetmarriedcom.png', [[37.513615, -122.826175], [37.557175, -122.113437]], {opacity: 1, interactive: true});
+
+text9b.on('click', function() {
+    window.location.href = "https://www.zola.com/wedding/drewandsara";
+});
 
 mymap.on('zoomend', function () {
-    if (mymap.getZoom() > 11 && mymap.hasLayer(image)) {
-        mymap.removeLayer(image);
-    }
-    if (mymap.getZoom() <= 11 && mymap.hasLayer(image) == false)
-    {
-        mymap.addLayer(image);
-    }   
+		if (mymap.getZoom() > 2&& mymap.hasLayer(text3) == false) {
+        mymap.removeLayer(zoom1);
+        mymap.addLayer(zoom2);
+				mymap.addLayer(text3);
+		}
+		if (mymap.getZoom() > 3) {
+				mymap.removeLayer(zoom2);
+				mymap.addLayer(text4);
+		}
+		if (mymap.getZoom() > 4) {
+				mymap.addLayer(text5);
+		}
+		if (mymap.getZoom() > 5) {
+				mymap.addLayer(text6);
+		}
+		if (mymap.getZoom() > 6) {
+				mymap.addLayer(text7);
+		}
+		if (mymap.getZoom() > 7) {
+				mymap.addLayer(text8);
+		}
+		if (mymap.getZoom() > 8) {
+				L.featureGroup([text9a, text9b, roberts, muirbeach, mvcc, sfo, oak]).addTo(mymap);
+		}
+//    if (mymap.getZoom() > 2 && mymap.hasLayer(zoom1)) {
+//        mymap.removeLayer(zoom1);
+//    }
+//    if (mymap.getZoom() <= 11 && mymap.hasLayer(image) == false) {
+//        mymap.addLayer(image);
+//    }   
 });
-	</script>
 
+// http://leafletjs.com/reference-1.3.0.html#featuregroup
+
+</script>
+
+
+
+</body>
 </html>
