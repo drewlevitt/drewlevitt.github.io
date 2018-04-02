@@ -51,7 +51,9 @@ var hut = L.icon({
 var marker = L.marker([37.840515, -122.257396], {icon: hut}).addTo(mymap);
 marker.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
 
-var image = L.imageOverlay('https://rawgit.com/drewlevitt/drewlevitt.github.io/master/text%20test.png', [[37.940743, -122.701665], [38.013751, -122.202988]], {opacity: 1, minZoom:10}).addTo(mymap);
+var image = L.imageOverlay('/images/1_togetherwithourfamilies.png',
+													 [[37.940743, -122.701665], [38.013751, -122.202988]], 
+													 {opacity: 1}).addTo(mymap);
 
 mymap.on('zoomend', function () {
     if (mymap.getZoom() > 11 && mymap.hasLayer(image)) {
