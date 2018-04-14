@@ -22,6 +22,10 @@ html, body, #mapid {
 		font-family: Georgia, serif;
 		font-size: 16px;
 }
+strong { 
+    font-weight: normal;
+		font-size: 20px;
+}
 </style>
 	
 </head>
@@ -85,9 +89,9 @@ var muirbeach = L.marker([37.861198, -122.575541], {icon: sep2});
 var sfo = L.marker([37.616450, -122.386059], {icon: plane});
 var oak = L.marker([37.712210, -122.212773], {icon: plane});
 
-roberts.bindPopup("<strong>East Bay Welcome Picnic</strong><br/>Friday, August 31, 2018, 4:00&ndash;8:00 pm<br/>Roberts Regional Park<br/><br/>Kick off the weekend with food, drink, and camaraderie in the fabulous Oakland hills! <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
-mvcc.bindPopup("<strong>Wedding Ceremony, Reception, and Revelry</strong><br/>Saturday, September 1, 2018, 6:00 pm onward<br/>Mill Valley Community Center<br/><br/>If you make it to only one event this weekend, make it this one. <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
-muirbeach.bindPopup("<strong>Beachside Brunch and Hike</strong><br/>Sunday, September 2, 2018, 11:30 am&ndash;3:30 pm<br/>Muir Beach<br/><br/>Brunch, because we're Millennials. Beachside, because we're Californians. <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
+roberts.bindPopup("<strong>East Bay Welcome Picnic</strong><br/>Friday, August 31, 2018, 4:00&ndash;8:00 pm<br/>Roberts Regional Park<br/><br/>Kick off the weekend with food, drink, and camaraderie in the fabulous Oakland hills!<br/><br/>More details on our wedding website (link below).");
+mvcc.bindPopup("<strong>Wedding Ceremony, Reception, and Revelry</strong><br/>Saturday, September 1, 2018, 6:30 pm onward<br/>Mill Valley Community Center<br/><br/>If you attend only one event this weekend, make it this one.<br/><br/>More details on our wedding website (link below).");
+muirbeach.bindPopup("<strong>Beachside Brunch and Hike</strong><br/>Sunday, September 2, 2018, 11:30 am&ndash;3:30 pm<br/>Muir Beach<br/><br/>Brunch, because we're millennials. Beachside, because we're Californians.<br/><br/>More details on our wedding website (link below).");
 
 //roberts.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
 
@@ -95,6 +99,7 @@ var frame_test = L.imageOverlay('images/frame.png', [[37.459986, -122.902224], [
 
 var zoom1 = L.imageOverlay('images/zoom1.png', [[26.431228, -146.601563], [46.316584, -98.437500]], {opacity: 1}).addTo(mymap);
 var zoom2 = L.imageOverlay('images/zoom2.png', [[36.102376, -137.460938], [39.707187, -108.984375]], {opacity: 1});
+var zoom3 = L.imageOverlay('images/zoom3.png', [[34.415973, -132.626953], [41.013066, -112.148438]], {opacity: 1});
 
 var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[71.357067, -185.625000], [75.275413, -48.164063]], {opacity: 1}).addTo(mymap);
 var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[58.263287, -167.871094], [61.689872, -75.761719]], {opacity: 1}).addTo(mymap);
@@ -109,20 +114,23 @@ var text9a = L.imageOverlay('images/9a_fullcelebrationndetailsandrsvpat.png', [[
 var text9b = L.imageOverlay('images/9b_wwwdrewandsaragetmarriedcom.png', [[37.536410, -122.727585], [37.578324, -122.100677]], {opacity: 1, interactive: true});
 
 text9b.on('click', function() {
-    window.location.href = "https://www.zola.com/wedding/drewandsara";
+//    window.location.href = "https://www.zola.com/wedding/drewandsara";
+		window.open('https://www.zola.com/wedding/drewandsara', '_blank');
 });
 
 mymap.on('zoomend', function () {
-		if (mymap.getZoom() > 2&& mymap.hasLayer(text3) == false) {
+		if (mymap.getZoom() > 2 && mymap.hasLayer(text3) == false) {
         mymap.removeLayer(zoom1);
         mymap.addLayer(zoom2);
 				mymap.addLayer(text3);
 		}
-		if (mymap.getZoom() > 3) {
+		if (mymap.getZoom() > 3 && mymap.hasLayer(text4) == false) {
 				mymap.removeLayer(zoom2);
+        mymap.addLayer(zoom3);
 				mymap.addLayer(text4);
 		}
 		if (mymap.getZoom() > 4) {
+				mymap.removeLayer(zoom3);
 				mymap.addLayer(text5);
 		}
 		if (mymap.getZoom() > 5) {
