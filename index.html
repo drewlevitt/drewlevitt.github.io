@@ -18,7 +18,10 @@ html, body, #mapid {
     height: 100vh;
     width: 100vw;
 }
-
+.leaflet-popup-content {
+		font-family: Georgia, serif;
+		font-size: 16px;
+}
 </style>
 	
 </head>
@@ -32,7 +35,7 @@ html, body, #mapid {
 
 <script>
 
-	var mymap = L.map('mapid').setView([37.9,-20.4], 2);
+	var mymap = L.map('mapid').setView([37.792422, -122.398682], 2);
 
 L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
@@ -51,21 +54,21 @@ var aug31 = L.icon({
 		iconUrl: 'images/Aug31_small.png',
 		iconSize: [100, 95],
 		iconAnchor: [50, 48],
-		popupAnchor: [0, 0]
+		popupAnchor: [0, -30]
 });
 
 var sep1 = L.icon({
 		iconUrl: 'images/Sep1_small.png',
 		iconSize: [100, 95],
 		iconAnchor: [35, 48],
-		popupAnchor: [0, 0]
+		popupAnchor: [15, -30]
 });
 
 var sep2 = L.icon({
 		iconUrl: 'images/Sep2_small.png',
 		iconSize: [100, 95],
 		iconAnchor: [65, 48],
-		popupAnchor: [0, 0]
+		popupAnchor: [-15, -30]
 });
 
 var plane = L.icon({
@@ -76,30 +79,34 @@ var plane = L.icon({
 });
 
 var roberts = L.marker([37.811908, -122.172674], {icon: aug31});
-var muirbeach = L.marker([37.861198, -122.575541], {icon: sep2});
 var mvcc = L.marker([37.899100, -122.528203], {icon: sep1, zIndexOffset: 1000});
+var muirbeach = L.marker([37.861198, -122.575541], {icon: sep2});
 
 var sfo = L.marker([37.616450, -122.386059], {icon: plane});
 var oak = L.marker([37.712210, -122.212773], {icon: plane});
 
+roberts.bindPopup("<strong>East Bay Welcome Picnic</strong><br/>Friday, August 31, 2018, 4:00&ndash;8:00 pm<br/>Roberts Regional Park<br/><br/>Kick off the weekend with food, drink, and camaraderie in the fabulous Oakland hills! <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
+mvcc.bindPopup("<strong>Wedding Ceremony, Reception, and Revelry</strong><br/>Saturday, September 1, 2018, 6:00 pm onward<br/>Mill Valley Community Center<br/><br/>If you make it to only one event this weekend, make it this one. <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
+muirbeach.bindPopup("<strong>Beachside Brunch and Hike</strong><br/>Sunday, September 2, 2018, 11:30 am&ndash;3:30 pm<br/>Muir Beach<br/><br/>Brunch, because we're Millennials. Beachside, because we're Californians. <a href='https://www.zola.com/wedding/drewandsara'>More details</a>");
+
 //roberts.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
 
+var frame_test = L.imageOverlay('images/frame.png', [[37.459986, -122.902224], [38.114414, -121.910708 ]], {opacity: 1}).addTo(mymap);
 
+var zoom1 = L.imageOverlay('images/zoom1.png', [[26.431228, -146.601563], [46.316584, -98.437500]], {opacity: 1}).addTo(mymap);
+var zoom2 = L.imageOverlay('images/zoom2.png', [[36.102376, -137.460938], [39.707187, -108.984375]], {opacity: 1});
 
-var zoom1 = L.imageOverlay('images/zoom1.png', [[23.989553, -155.808169], [47.830333, -92.526917]], {opacity: 1}).addTo(mymap);
-var zoom2 = L.imageOverlay('images/zoom2.png', [[31.600329, -136.648013], [37.808298, -88.483949]], {opacity: 1});
+var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[71.357067, -185.625000], [75.275413, -48.164063]], {opacity: 1}).addTo(mymap);
+var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[58.263287, -167.871094], [61.689872, -75.761719]], {opacity: 1}).addTo(mymap);
+var text3 = L.imageOverlay('images/3_aredelightedtoinviteyoutojoinus.png', [[49.095452, -145.019531], [51.234407, -100.722656]], {opacity: 1});
+var text4 = L.imageOverlay('images/4_incelebrationofourmarriage.png', [[43.707594, -131.682129], [44.933696, -113.664551]], {opacity: 1});
+var text5 = L.imageOverlay('images/5_onsaturdayseptember1st2018.png', [[40.863680, -127.803955], [41.508577, -117.301025]], {opacity: 1});
+var text6 = L.imageOverlay('images/6_inthesanfranciscobayarea.png', [[39.317300, -124.969482], [39.639538, -120.113525]], {opacity: 1});
+var text7 = L.imageOverlay('images/7_letthismapintroduceyou.png', [[38.552461, -123.425903], [38.724090, -121.343994]], {opacity: 1});
+var text8 = L.imageOverlay('images/8_toourplannedfestivities.png', [[38.172353, -122.879333], [38.256515, -121.926270]], {opacity: 1});
 
-var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[74.242827, -39.792545], [78.229733, 114.543396]], {opacity: 1}).addTo(mymap);
-var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[61.262091, -82.858948], [65.064991, 20.148859]], {opacity: 1}).addTo(mymap);
-var text3 = L.imageOverlay('images/3_aredelightedtoinviteyoutojoinus.png', [[50.474696, -103.601136], [52.925188, -54.646060]], {opacity: 1});
-var text4 = L.imageOverlay('images/4_incelebrationofourmarriage.png', [[45.386556, -108.083559], [46.788464, -88.483949]], {opacity: 1});
-var text5 = L.imageOverlay('images/5_onsaturdayseptember1st2018.png', [[42.817750, -116.832763], [43.475029, -105.516845]], {opacity: 1});
-var text6 = L.imageOverlay('images/6_inthesanfranciscobayarea.png', [[40.118181, -120.963623], [40.470125, -115.723144]], {opacity: 1});
-var text7 = L.imageOverlay('images/7_letthismapintroduceyou.png', [[38.812744, -121.676231], [38.996750, -119.371552]], {opacity: 1});
-var text8 = L.imageOverlay('images/8_toourplannedfestivities.png', [[38.271269, -122.320149], [38.374698, -121.290181]], {opacity: 1});
-
-var text9a = L.imageOverlay('images/9a_fullcelebrationndetailsandrsvpat.png', [[38.005838, -122.847604], [38.042208, -122.098271]], {opacity: 1});
-var text9b = L.imageOverlay('images/9b_wwwdrewandsaragetmarriedcom.png', [[37.513615, -122.826175], [37.557175, -122.113437]], {opacity: 1, interactive: true});
+var text9a = L.imageOverlay('images/9a_fullcelebrationndetailsandrsvpat.png', [[37.999950, -122.746811], [38.030245, -122.069778]], {opacity: 1});
+var text9b = L.imageOverlay('images/9b_wwwdrewandsaragetmarriedcom.png', [[37.536410, -122.727585], [37.578324, -122.100677]], {opacity: 1, interactive: true});
 
 text9b.on('click', function() {
     window.location.href = "https://www.zola.com/wedding/drewandsara";
@@ -139,6 +146,10 @@ mymap.on('zoomend', function () {
 });
 
 // http://leafletjs.com/reference-1.3.0.html#featuregroup
+
+
+// This next function causes a mouse click to alert the latlong that was clicked. Valuable in placing the images!
+//mymap.on('click', function(e) { alert("Lat, Lon : " + e.latlng.lat.toFixed(6) + ", " + e.latlng.lng.toFixed(6)) });
 
 </script>
 
