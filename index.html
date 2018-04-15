@@ -114,9 +114,11 @@ muirbeach.bindPopup("<strong>Beachside Brunch and Hike</strong><br/>Sunday, Sept
 
 var frame = L.imageOverlay('images/frame.png', [[37.459986, -122.902224], [38.114414, -121.910708 ]], {opacity: 1}).addTo(mymap);
 
-var zoom1 = L.imageOverlay('images/zoom1.png', [[26.431228, -146.601563], [46.316584, -98.437500]], {opacity: 1}).addTo(mymap);
-var zoom2 = L.imageOverlay('images/zoom2.png', [[36.102376, -137.460938], [39.707187, -108.984375]], {opacity: 1});
 var zoom3 = L.imageOverlay('images/zoom3.png', [[34.415973, -132.626953], [41.013066, -112.148438]], {opacity: 1});
+
+var help1 = L.imageOverlay('images/help1.png', [[-32.249974, -209.355469], [-8.754795, -70.839844]], {opacity: 1}).addTo(mymap);
+var help2 = L.imageOverlay('images/help2.png', [[7.100893, -149.765625], [11.609193, -111.621094]], {opacity: 1});
+var help3 = L.imageOverlay('images/help3.png', [[37.327581, -122.915039], [37.432341, -121.912537]], {opacity: 1});
 
 var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[71.357067, -185.625000], [75.275413, -48.164063]], {opacity: 1}).addTo(mymap);
 var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[58.263287, -167.871094], [61.689872, -75.761719]], {opacity: 1}).addTo(mymap);
@@ -137,17 +139,15 @@ text9b.on('click', function() {
 
 mymap.on('zoomend', function () {
 		if (mymap.getZoom() > 2 && mymap.hasLayer(text3) == false) {
-        mymap.removeLayer(zoom1);
-        mymap.addLayer(zoom2);
+        mymap.removeLayer(help1);
+        mymap.addLayer(help2);
 				mymap.addLayer(text3);
 		}
 		if (mymap.getZoom() > 3 && mymap.hasLayer(text4) == false) {
-				mymap.removeLayer(zoom2);
-        mymap.addLayer(zoom3);
+				mymap.removeLayer(help2);
 				mymap.addLayer(text4);
 		}
 		if (mymap.getZoom() > 4) {
-				mymap.removeLayer(zoom3);
 				mymap.addLayer(text5);
 		}
 		if (mymap.getZoom() > 5) {
@@ -160,7 +160,7 @@ mymap.on('zoomend', function () {
 				mymap.addLayer(text8);
 		}
 		if (mymap.getZoom() > 8) {
-				L.featureGroup([text9a, text9b, roberts, muirbeach, mvcc, sfo, oak]).addTo(mymap);
+				L.featureGroup([text9a, text9b, roberts, muirbeach, mvcc, sfo, oak, help3]).addTo(mymap);
 		}
 //    if (mymap.getZoom() > 2 && mymap.hasLayer(zoom1)) {
 //        mymap.removeLayer(zoom1);
