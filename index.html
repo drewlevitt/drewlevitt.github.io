@@ -11,9 +11,10 @@
 		<link rel="manifest" href="manifest.json">
 		
 		<link rel="prefetch" href='images/frame.png'>
-		<link rel="prefetch" href='images/explanation.png'>
+		<link rel="prefetch" href='images/help1.png'>
 		<link rel="prefetch" href='images/1_togetherwithourfamilies.png'>
 		<link rel="prefetch" href='images/2_saradraperzivetzanddrewlevitt.png'>
+		<link rel="prefetch" href='images/help2.png'>
 		<link rel="prefetch" href='images/3_aredelightedtoinviteyoutojoinus.png'>
 		<link rel="prefetch" href='images/4_incelebrationofourmarriage.png'>
 		<link rel="prefetch" href='images/5_onsaturdayseptember1st2018.png'>
@@ -26,6 +27,7 @@
 		<link rel="prefetch" href='images/Sep1_small.png'>
 		<link rel="prefetch" href='images/Sep2_small.png'>
 		<link rel="prefetch" href='images/plane_trans.png'>
+		<link rel="prefetch" href='images/help3.png'>
 
 <style>
 
@@ -58,7 +60,9 @@ strong {
 
 <script>
 
-	var mymap = L.map('mapid').setView([37.792422, -122.398682], 2);
+screen.orientation.lock('landscape');
+
+var mymap = L.map('mapid').setView([37.792422, -122.398682], 2);
 
 L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
