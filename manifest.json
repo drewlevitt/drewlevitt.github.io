@@ -1,0 +1,7 @@
+{
+  "name": "Invitation",
+  "short_name": "Invitation",
+  "display": "standalone",
+  "orientation":  "landscape",
+  "description": "Drew and Sara's wedding invitation"
+}
