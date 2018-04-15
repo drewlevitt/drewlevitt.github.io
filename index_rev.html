@@ -7,23 +7,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
-		
-		<link rel="prefetch" href='images/frame.png'>
-		<link rel="prefetch" href='images/explanation.png'>
-		<link rel="prefetch" href='images/1_togetherwithourfamilies.png'>
-		<link rel="prefetch" href='images/2_saradraperzivetzanddrewlevitt.png'>
-		<link rel="prefetch" href='images/3_aredelightedtoinviteyoutojoinus.png'>
-		<link rel="prefetch" href='images/4_incelebrationofourmarriage.png'>
-		<link rel="prefetch" href='images/5_onsaturdayseptember1st2018.png'>
-		<link rel="prefetch" href='images/6_inthesanfranciscobayarea.png'>
-		<link rel="prefetch" href='images/7_letthismapintroduceyou.png'>
-		<link rel="prefetch" href='images/8_toourplannedfestivities.png'>
-		<link rel="prefetch" href='images/9a_fullcelebrationndetailsandrsvpat.png'>
-		<link rel="prefetch" href='images/9b_wwwdrewandsaragetmarriedcom.png'>
-		<link rel="prefetch" href='images/Aug31_small.png'>
-		<link rel="prefetch" href='images/Sep1_small.png'>
-		<link rel="prefetch" href='images/Sep2_small.png'>
-		<link rel="prefetch" href='images/plane_trans.png'>
 
 <style>
 
@@ -103,8 +86,8 @@ var roberts = L.marker([37.811908, -122.172674], {icon: aug31});
 var mvcc = L.marker([37.899100, -122.528203], {icon: sep1, zIndexOffset: 1000});
 var muirbeach = L.marker([37.861198, -122.575541], {icon: sep2});
 
-var sfo = L.marker([37.616450, -122.386059], {icon: plane, interactive: false});
-var oak = L.marker([37.712210, -122.212773], {icon: plane, interactive: false});
+var sfo = L.marker([37.616450, -122.386059], {icon: plane});
+var oak = L.marker([37.712210, -122.212773], {icon: plane});
 
 roberts.bindPopup("<strong>East Bay Welcome Picnic</strong><br/>Friday, August 31, 2018, 4:00&ndash;8:00 pm<br/>Roberts Regional Park<br/><br/>Kick off the weekend with food, drink, and camaraderie in the fabulous Oakland hills!<br/><br/>More details on our wedding website (link below).");
 mvcc.bindPopup("<strong>Wedding Ceremony, Reception, and Revelry</strong><br/>Saturday, September 1, 2018, 6:30 pm onward<br/>Mill Valley Community Center<br/><br/>If you attend only one event this weekend, make it this one.<br/><br/>More details on our wedding website (link below).");
@@ -112,20 +95,18 @@ muirbeach.bindPopup("<strong>Beachside Brunch and Hike</strong><br/>Sunday, Sept
 
 //roberts.bindTooltip("The Hut", {permanent: false, className: "my-label", offset: [-18, 0] });
 
-var frame = L.imageOverlay('images/frame.png', [[37.459986, -122.902224], [38.114414, -121.910708 ]], {opacity: 1}).addTo(mymap);
+var frame_test = L.imageOverlay('images/frame.png', [[37.459986, -122.902224], [38.114414, -121.910708 ]], {opacity: 1}).addTo(mymap);
 
 var zoom1 = L.imageOverlay('images/zoom1.png', [[26.431228, -146.601563], [46.316584, -98.437500]], {opacity: 1}).addTo(mymap);
-var zoom2 = L.imageOverlay('images/zoom2.png', [[36.102376, -137.460938], [39.707187, -108.984375]], {opacity: 1});
-var zoom3 = L.imageOverlay('images/zoom3.png', [[34.415973, -132.626953], [41.013066, -112.148438]], {opacity: 1});
 
 var text1 = L.imageOverlay('images/1_togetherwithourfamilies.png', [[71.357067, -185.625000], [75.275413, -48.164063]], {opacity: 1}).addTo(mymap);
 var text2 = L.imageOverlay('images/2_saradraperzivetzanddrewlevitt.png', [[58.263287, -167.871094], [61.689872, -75.761719]], {opacity: 1}).addTo(mymap);
-var text3 = L.imageOverlay('images/3_aredelightedtoinviteyoutojoinus.png', [[49.095452, -145.019531], [51.234407, -100.722656]], {opacity: 1});
-var text4 = L.imageOverlay('images/4_incelebrationofourmarriage.png', [[43.707594, -131.682129], [44.933696, -113.664551]], {opacity: 1});
-var text5 = L.imageOverlay('images/5_onsaturdayseptember1st2018.png', [[40.863680, -127.803955], [41.508577, -117.301025]], {opacity: 1});
-var text6 = L.imageOverlay('images/6_inthesanfranciscobayarea.png', [[39.317300, -124.969482], [39.639538, -120.113525]], {opacity: 1});
-var text7 = L.imageOverlay('images/7_letthismapintroduceyou.png', [[38.552461, -123.425903], [38.724090, -121.343994]], {opacity: 1});
-var text8 = L.imageOverlay('images/8_toourplannedfestivities.png', [[38.172353, -122.879333], [38.256515, -121.926270]], {opacity: 1});
+var text3 = L.imageOverlay('images/3_aredelightedtoinviteyoutojoinus.png', [[49.095452, -145.019531], [51.234407, -100.722656]], {opacity: 1}).addTo(mymap);
+var text4 = L.imageOverlay('images/4_incelebrationofourmarriage.png', [[43.707594, -131.682129], [44.933696, -113.664551]], {opacity: 1}).addTo(mymap);
+var text5 = L.imageOverlay('images/5_onsaturdayseptember1st2018.png', [[40.863680, -127.803955], [41.508577, -117.301025]], {opacity: 1}).addTo(mymap);
+var text6 = L.imageOverlay('images/6_inthesanfranciscobayarea.png', [[39.317300, -124.969482], [39.639538, -120.113525]], {opacity: 1}).addTo(mymap);
+var text7 = L.imageOverlay('images/7_letthismapintroduceyou.png', [[38.552461, -123.425903], [38.724090, -121.343994]], {opacity: 1}).addTo(mymap);
+var text8 = L.imageOverlay('images/8_toourplannedfestivities.png', [[38.172353, -122.879333], [38.256515, -121.926270]], {opacity: 1}).addTo(mymap);
 
 var text9a = L.imageOverlay('images/9a_fullcelebrationndetailsandrsvpat.png', [[37.999950, -122.746811], [38.030245, -122.069778]], {opacity: 1});
 var text9b = L.imageOverlay('images/9b_wwwdrewandsaragetmarriedcom.png', [[37.536410, -122.727585], [37.578324, -122.100677]], {opacity: 1, interactive: true});
@@ -136,28 +117,8 @@ text9b.on('click', function() {
 });
 
 mymap.on('zoomend', function () {
-		if (mymap.getZoom() > 2 && mymap.hasLayer(text3) == false) {
+		if (mymap.getZoom() > 2) {
         mymap.removeLayer(zoom1);
-        mymap.addLayer(zoom2);
-				mymap.addLayer(text3);
-		}
-		if (mymap.getZoom() > 3 && mymap.hasLayer(text4) == false) {
-				mymap.removeLayer(zoom2);
-        mymap.addLayer(zoom3);
-				mymap.addLayer(text4);
-		}
-		if (mymap.getZoom() > 4) {
-				mymap.removeLayer(zoom3);
-				mymap.addLayer(text5);
-		}
-		if (mymap.getZoom() > 5) {
-				mymap.addLayer(text6);
-		}
-		if (mymap.getZoom() > 6) {
-				mymap.addLayer(text7);
-		}
-		if (mymap.getZoom() > 7) {
-				mymap.addLayer(text8);
 		}
 		if (mymap.getZoom() > 8) {
 				L.featureGroup([text9a, text9b, roberts, muirbeach, mvcc, sfo, oak]).addTo(mymap);
